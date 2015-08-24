@@ -1,0 +1,26 @@
+LAUNCH ODOO.COM
+
+./odoo.py --addons-path=addons/,../ps-custom/ --xmlrpc-port=8888 --db-filter=shopbe -d shopbe -i ShopInBelgium
+
+
+Launch PS instance
+./odoo.py --xmlrpc-port=8888 --db-filter=shopbe -d shopbe -i website_event -i portal -i website_blog -i base_import_module -i website_event  -i base_action_rule
+
+Deploy PS Module
+./odoo.py deploy --db shopbe --login admin --password admin --force ../ps-custom/ShopInBelgium http://localhost:8888
+
+
+SASS
+compile and watch
+
+sass  -r bootstrap-sass -t expanded --compass --watch  --unix-newlines --style compact --trace shopinbelgium.sass:shopinbelgium.css
+
+check css
+
+./check_css.py ps-custom/ShopInBelgium/static/src/css/shopinbelgium.css
+
+
+
+
+Login on SIB - Saas
+https://sib1607.odoo.com/login?db=sib1607&login=admin&key=admin
